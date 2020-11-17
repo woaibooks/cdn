@@ -141,11 +141,6 @@ var MAC={
             }
         })
     },
-    'Qrcode':{
-        'Init':function(){
-            $('.mac_qrcode').attr('src','//api.maccms.com/qrcode/index/w/150/h/150/url/' + MAC.Url);
-        }
-    },
     'Shorten': {
         'Init':function(){
             if($('.mac_shorten').length==0){
@@ -153,22 +148,6 @@ var MAC={
             }
             MAC.Shorten.Get();
         },
-        'Get':function(url,call){
-            url=url||location.href;
-            MAC.Ajax('//api.maccms.com/shorten/index/url/'+ encodeURIComponent(url),'get','jsonp','',function(r){
-                if (r.code == 1) {
-                    if($('.mac_shorten').length>0) {
-                        $('.mac_shorten').val(r.data.url_short);
-                        $('.mac_shorten').html(r.data.url_short);
-                    }
-                    if(call){
-                        call(r);
-                    }
-
-                }
-            });
-        }
-    },
     'Image':{
         'Lazyload':{
             'Show': function(){
